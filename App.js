@@ -1,13 +1,15 @@
 import React from "react";
-import ReactDOM from "react-dom"
-const parent=React.createElement(
-    "div",{id:"parent"},
-    [ React.createElement("div",{id:"child"},
-        [React.createElement("h1",{},"Hello this is  h1 tag"),
-        React.createElement("h2",{},"Hello this is  h2 tag")]), React.createElement("div",{id:"child"},
-            [React.createElement("h1",{},"Hello this is  h1 tag"),
-            React.createElement("h2",{},"Hello this is  h2 tag")])
-    ]
-)
+import ReactDOM from "react-dom/client"
+
+const Heading=()=>{
+    return <div>
+<h1>Hello darling</h1>
+<Subheading/>
+        </div>
+}
+
+const Subheading=()=>{
+    return <h2>Hello baby</h2>
+}
 const root=ReactDOM.createRoot(document.getElementById("root"));
-root.render(parent)
+root.render(<Heading/>)
