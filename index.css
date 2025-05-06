@@ -1,3 +1,43 @@
-#heading{
-    color:red;
+.header{
+    display:flex;
+    justify-content: space-between;
+    border:1px solid gray;
+}
+.logo{
+    width:130px;
+}
+.nav-items{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav-items > ul{
+    padding-right:20px;
+    display:flex;
+    list-style: none;
+    gap:20px;
+}
+.nav-items >ul >li{
+    cursor: pointer;
+}
+.body{
+    padding-top:20px;
+}
+.rest-container{
+    display:flex;
+    flex-wrap: wrap;
+    gap:40px;
+}
+.res-card{
+    padding:5px;
+    background-color: aliceblue;
+    width:250px;
+}
+.res-card:hover{
+    border:1px solid black;
+    cursor:pointer;
+}
+.rest-logo{
+    width:100%;
+    
 }
