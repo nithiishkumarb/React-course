@@ -1,7 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom/client"
-
-const resobj=[
+export const resobj=[
     {
     "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
     "info": {
@@ -699,64 +696,3 @@ const resobj=[
     "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo"
     }
 ]
-
-const Header=()=>{
-    return(
-        <div className="header">
-            <div className="logo_container">
-                <img className="logo" src="https://t4.ftcdn.net/jpg/01/10/15/23/360_F_110152388_1x3oP8JvC7FaD2qtSLVcP0tMIlKZTUVK.jpg" alt="Logo"/>
-            </div>
-            <div className="nav-items">
-                <ul>
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>Contact</li>
-                    <li>Cart</li>
-                </ul>
-            </div>
-        </div>
-    )
-}
-
-const Body=()=>{
-    return(
-        <div className="body">
-            <div className="search">
-                <input type="text"  placeholder="Search"/>
-                <button>Search</button>
-            </div>
-            <div className="rest-container">
-                {resobj.map(res=>(
-                    <Resturantcard key={res.info.id}resobj={res}/>
-                ))}
-            </div>
-        </div>
-    )
-}
-
-
-
-const Resturantcard=(props)=>{
-    const {resobj}=props;
-    const {name,avgRating,sla,cloudinaryImageId,cuisines}=resobj?.info || {};
-    return(
-        <div className="res-card">
-            <img className="rest-logo" alt="rest-logo" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+ cloudinaryImageId}/>
-            <h3>{name}</h3>
-            <h4>{cuisines}</h4>
-            <h4>{avgRating}</h4>
-            <h4>{sla.slaString}</h4>
-        </div>
-    )
-}
-
-const App=()=>{
-    return (
-        <div className="app">
-            <Header/>
-            <Body/>
-        </div>
-    )
-}
-const root=ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App/>)
