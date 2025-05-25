@@ -1,21 +1,10 @@
-import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router';
-import { RES_URL } from '../utils/constants';
+import useRestaurantMenu from "../utils/useRestaurantMenu"
 const RestaurantMenu = () => {
-  const [resInfo,setresinfo]=useState();
-  useEffect(()=>{
-    fetchmenu();
-  },[])
   const { resid }=useParams();
-  console.log(resid);
-  const fetchmenu=async()=>{
-    const data = await fetch(RES_URL+resid);
-    const json = await data.json();
-    setresinfo(json);
-  }
+  const resInfo=useRestaurantMenu(resid);
   const {name,cuisines,costForTwoMessage}=resInfo?.data.cards[2]?.card?.card?.info || {};
   const {itemCards}=resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[6]?.card?.card || {};
-  
   return (
     <div className='menu'>
       <h1>{name}</h1>
@@ -30,5 +19,4 @@ const RestaurantMenu = () => {
     </div>
   )
 }
-
 export default RestaurantMenu

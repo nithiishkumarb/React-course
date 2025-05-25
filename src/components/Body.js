@@ -2,10 +2,13 @@ import Resturantcard from "./ResturantCard";
 import {useEffect, useState} from "react"
 import {resobj} from "../utils/mockdata";
 import { Link } from "react-router";
+import useOnlineStatus from "../utils/useOnlineStatus";
 const Body=()=>{
     const [listOfRestaurant,setListofRestaurant]=useState(resobj);
     const [filterRestaurent,setFilterRestaurant]=useState(resobj);
     const [search,setSearch]=useState("")
+    const onlineStatus=useOnlineStatus();
+
     useEffect(()=>{
         fetchData()
     },[])
@@ -15,6 +18,13 @@ const Body=()=>{
         const Resturant=json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
         setListofRestaurant(Resturant);
         setFilterRestaurant(Resturant);
+    }
+    if(onlineStatus===false){
+        return(
+            <div>
+                <h1>Oops !!! you are offline, Please check the internet connection</h1>
+            </div>
+        )
     }
     return(
         <div className="body">
