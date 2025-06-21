@@ -1,13 +1,16 @@
 import Resturantcard,{WithLabel} from "./ResturantCard";
-import {useEffect, useState} from "react"
+import {useContext, useEffect, useState} from "react"
 import {resobj} from "../utils/mockdata";
 import { Link } from "react-router";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/usecontext";
 const Body=()=>{
     const [listOfRestaurant,setListofRestaurant]=useState(resobj);
     const [filterRestaurent,setFilterRestaurant]=useState(resobj);
     const [search,setSearch]=useState("")
     const onlineStatus=useOnlineStatus();
+    const { loggedIdUser,setuserName}=useContext(UserContext);
+    console.log(setuserName)
 
     const PromtedLabel=WithLabel(Resturantcard);
 
@@ -45,6 +48,10 @@ const Body=()=>{
                         const sortList=listOfRestaurant.filter((rest) => (rest.info.avgRating > 4.5))
                         setListofRestaurant(sortList)
                     }}>Filter top Resturants</button>
+                </div>
+                <div className="mx-4 flex gap-4">
+                    <input className="border rounded-md" placeholder="Enter User name" value={ loggedIdUser} onChange={(e)=>{setuserName(e.target.value)}}></input>
+                    <button className="bg-fuchsia-100 px-4 py-1 cursor-pointer">Update user name</button>
                 </div>
             </div>
             <div className="flex flex-wrap">
